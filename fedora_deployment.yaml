@@ -1,0 +1,24 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedorabox-deployment
+  labels:
+    app: fedora
+spec:
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: fedora
+  template:
+    metadata:
+      labels:
+        app: fedora
+    spec:
+      containers:
+      - name: fedora
+        image: fedora
+        imagePullPolicy: IfNotPresent
+        
+        command: ['sh', '-c', 'echo FedoraBox 1 is Running ; sleep 3600']
