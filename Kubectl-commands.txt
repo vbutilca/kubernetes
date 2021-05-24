@@ -1,0 +1,9 @@
+#DEPLOY A RESOURCE FROM YAML
+https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/
+
+kubectl apply -f <filename.yaml>
+
+
+#EDIT THE DEFINITION OF A DEPLOYED POD
+
+kubectl edit pod redis       #opens up the yaml file for the pod, for instance we can change the image of the container, save and then the pod redeploys the container
