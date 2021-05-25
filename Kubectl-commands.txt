@@ -14,10 +14,19 @@ kubectl run <pod_name> --image <image_name>
 kubect run <pod_name> --image <image_name> --dry-run=client > pod_deployment.yaml
 
 
-############ REPLICATION CONTROLLERS #############
+############ REPLICATION CONTROLLERS/ REPLICASET #############
 
 #DEPLOY THE REPLICATION CONTROLLER FROM A TEMPLATE
 kubectl create -f rc-definition.yaml			
 
 #SHOW REPLICATION CONTROLLERS 
 kubectl get replicationcontroller
+
+#EDIT THE REPLICASET 
+kubectl replace -f replicaset-definition.yaml
+
+#SCALE THE REPLICASET
+kubectl scale --replicas=6 -f replicaset-definition.yaml
+kubectl scale --replicas=6 replicaset <replicaset_name>
+
+
