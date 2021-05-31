@@ -47,3 +47,11 @@ kubectl create -f deployment-definition.yaml
 kubectl get deployments
 
 
+########### SERVICES #############
+
+#DEPLOY
+kubectl create -f service-definition.yaml
+
+#SHOW SERVICES
+kubectl get services
+
