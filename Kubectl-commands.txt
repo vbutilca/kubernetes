@@ -55,3 +55,11 @@ kubectl create -f service-definition.yaml
 #SHOW SERVICES
 kubectl get services
 
+#CREATE A NODEPORT SERVICE FOR POD nginx
+kubectl create service nodeport nginx --tcp=80:80 --node-port=30080
+
+#CREATE A CLUSTER-IP SERVICE FOR POD redis
+kubectl expose pod redis --port=6379 --name redis-service
+
+
+
