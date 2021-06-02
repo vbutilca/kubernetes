@@ -13,6 +13,9 @@ kubectl run <pod_name> --image <image_name>
 # CREATE A TEMPLATE FOR A POD DEPLOYMENT USING THE kubectl run command with --dryrun
 kubect run <pod_name> --image <image_name> --dry-run=client > pod_deployment.yaml
 
+#EXPOSE THE APP in the pod ON A SPECIFIC POD PORT
+kubectl run custom-nginx --image=nginx --port=8080
+
 
 ############ REPLICATION CONTROLLERS/ REPLICASET #############
 
@@ -39,6 +42,8 @@ kubectl delete replicaset <replicaset_name>
 
 ########### DEPLOYMENTS #############
 
+#CREATE COMMAND
+kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3
 
 #DEPLOY THE deployment FROM A TEMPLATE
 kubectl create -f deployment-definition.yaml			
