@@ -1,0 +1,5 @@
+# get all that's running on the cluster
+kubectl get all --all-namespaces
+
+# get control plane components in the cluster
+kubectl get all --namespace kube-system
