@@ -1,3 +1,6 @@
+# get Nodes in the cluster
+kubectl get nodes
+
 # get all that's running on the cluster
 kubectl get all --all-namespaces
 
