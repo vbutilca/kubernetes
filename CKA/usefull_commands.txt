@@ -6,3 +6,10 @@ kubectl get all --all-namespaces
 
 # get control plane components in the cluster
 kubectl get all --namespace kube-system
+
+
+# select pods by labels
+kubectl get pods --selector app=App1
+
+# select pods by multiple labels
+kubectl get pods --selector env=prod,tier=frontend,bu=finance
