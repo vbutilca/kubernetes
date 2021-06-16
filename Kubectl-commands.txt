@@ -8,10 +8,10 @@ kubectl apply -f <filename.yaml>
 kubectl edit pod redis       #opens up the yaml file for the pod, for instance we can change the image of the container, save and then the pod redeploys the container
 
 #DEPLOY A POD
-kubectl run <pod_name> --image <image_name> 
+kubectl run <pod_name> --image <image_name>
 
 # CREATE A TEMPLATE FOR A POD DEPLOYMENT USING THE kubectl run command with --dryrun
-kubect run <pod_name> --image <image_name> --dry-run=client > pod_deployment.yaml
+kubectl run <pod_name> --image <image_name> --dry-run=client -o yaml > pod_deployment.yaml
 
 #EXPOSE THE APP in the pod ON A SPECIFIC POD PORT
 kubectl run custom-nginx --image=nginx --port=8080
@@ -20,12 +20,12 @@ kubectl run custom-nginx --image=nginx --port=8080
 ############ REPLICATION CONTROLLERS/ REPLICASET #############
 
 #DEPLOY THE REPLICATION CONTROLLER FROM A TEMPLATE
-kubectl create -f rc-definition.yaml			
+kubectl create -f rc-definition.yaml
 
-#SHOW REPLICATION CONTROLLERS 
+#SHOW REPLICATION CONTROLLERS
 kubectl get replicationcontroller
 
-#EDIT THE REPLICASET 
+#EDIT THE REPLICASET
 kubectl replace -f replicaset-definition.yaml
 
 #SCALE THE REPLICASET
@@ -46,9 +46,9 @@ kubectl delete replicaset <replicaset_name>
 kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3
 
 #DEPLOY THE deployment FROM A TEMPLATE
-kubectl create -f deployment-definition.yaml			
+kubectl create -f deployment-definition.yaml
 
-#SHOW REPLICATION CONTROLLERS 
+#SHOW REPLICATION CONTROLLERS
 kubectl get deployments
 
 
@@ -65,6 +65,3 @@ kubectl create service nodeport nginx --tcp=80:80 --node-port=30080
 
 #CREATE A CLUSTER-IP SERVICE FOR POD redis
 kubectl expose pod redis --port=6379 --name redis-service
-
-
-

@@ -26,3 +26,7 @@ kubectl taint nodes <node-name> key=value:taint-effect
 
 # verify applied taints on a node
 kubectl describe node <node-name> | grep Taint
+
+#remove taint from node by using the key
+kubectl taint nodes <node-name> <key>-
+kubectl taint nodes controlplane node-role.kubernetes.io/master-
