@@ -13,3 +13,16 @@ kubectl get pods --selector app=App1
 
 # select pods by multiple labels
 kubectl get pods --selector env=prod,tier=frontend,bu=finance
+
+
+# apply a taint on a node
+kubectl taint nodes <node-name> key=value:taint-effect
+
+#	-taint-effect reffers to what happens to Pods that DO NOT tolerate this taint
+#	-we have 3 taint effects
+#		NoSchedule - the pods are not sheduled on the Node
+#		PreferNoSchedule - the system will try to avoid placing a pod on the Node
+#		NoExecute - existing pods on the node will be evicted if they don't tolerate the taint
+
+# verify applied taints on a node
+kubectl describe node <node-name> | grep Taint
