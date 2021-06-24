@@ -1,3 +1,72 @@
+####PODS########
+
+#DEPLOY A RESOURCE FROM YAML
+https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/
+kubectl apply -f <filename.yaml>
+
+#EDIT THE DEFINITION OF A DEPLOYED POD
+kubectl edit pod redis       #opens up the yaml file for the pod, for instance we can change the image of the container, save and then the pod redeploys the container
+
+#DEPLOY A POD
+kubectl run <pod_name> --image <image_name>
+
+# CREATE A TEMPLATE FOR A POD DEPLOYMENT USING THE kubectl run command with --dryrun
+kubectl run <pod_name> --image <image_name> --dry-run=client -o yaml > pod_deployment.yaml
+
+#EXPOSE THE APP in the pod ON A SPECIFIC POD PORT
+kubectl run custom-nginx --image=nginx --port=8080
+
+
+############ REPLICATION CONTROLLERS/ REPLICASET #############
+
+#DEPLOY THE REPLICATION CONTROLLER FROM A TEMPLATE
+kubectl create -f rc-definition.yaml
+
+#SHOW REPLICATION CONTROLLERS
+kubectl get replicationcontroller
+
+#EDIT THE REPLICASET
+kubectl replace -f replicaset-definition.yaml
+
+#SCALE THE REPLICASET
+kubectl scale --replicas=6 -f replicaset-definition.yaml
+kubectl scale --replicas=6 replicaset <replicaset_name>
+
+#SHOW REPLICASETS
+kubectl get replicaset
+
+#DELETE REPLICASETS
+kubectl delete replicaset <replicaset_name>
+
+
+
+########### DEPLOYMENTS #############
+
+#CREATE COMMAND
+kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3
+
+#DEPLOY THE deployment FROM A TEMPLATE
+kubectl create -f deployment-definition.yaml
+
+#SHOW REPLICATION CONTROLLERS
+kubectl get deployments
+
+
+########### SERVICES #############
+
+#DEPLOY
+kubectl create -f service-definition.yaml
+
+#SHOW SERVICES
+kubectl get services
+
+#CREATE A NODEPORT SERVICE FOR POD nginx
+kubectl create service nodeport nginx --tcp=80:80 --node-port=30080
+
+#CREATE A CLUSTER-IP SERVICE FOR POD redis
+kubectl expose pod redis --port=6379 --name redis-service
+
+
 # get Nodes in the cluster
 kubectl get nodes
 
