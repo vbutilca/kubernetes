@@ -83,6 +83,7 @@ kubectl get pods --selector app=App1
 # select pods by multiple labels
 kubectl get pods --selector env=prod,tier=frontend,bu=finance
 
+##### NODES #####
 
 # apply a taint on a node
 kubectl taint nodes <node-name> key=value:taint-effect
@@ -99,3 +100,14 @@ kubectl describe node <node-name> | grep Taint
 #remove taint from node by using the key
 kubectl taint nodes <node-name> <key>-
 kubectl taint nodes controlplane node-role.kubernetes.io/master-
+
+#label a node, we use labels so we can set selectors on resources(ex.pods) in order to deploy them on specific nodes
+kubectl label nodes <node-name> <key>=<value>
+
+#get existing labels on a node
+kubectl describe nodes node01 # look for Labels
+kubectl get node node01 -o yaml # look for Labels
+
+#set a label on a node
+kubectl label nodes <node-name> <key>=<value>
+kubectl label nodes node01 color=blue
